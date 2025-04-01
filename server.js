@@ -8,24 +8,25 @@ mongoose.connect('mongodb+srv://myAtlasDBUser:lzCOIn96k4y4GigX@myatlasclusteredu
     useUnifiedTopology: true,
   });
   
-const itemSchema = new mongoose.Schema({
-  name: String,
-});
-
-const Item = mongoose.model('Item', itemSchema);
-
+const visitorSchema = new mongoose.Schema({
+    name: String,
+  });
+  
+const Visitor = mongoose.model('Visitor', visitorSchema);
+  
 app.use(express.json());
 
-app.get('/items', async (req, res) => {
-  const items = await Item.find();
-  res.json(items);
+aapp.get('/visitors', async (req, res) => {
+  const visitors = await Visitor.find();
+  res.json(visitors);
 });
 
-app.post('/items', async (req, res) => {
-  const newItem = new Item(req.body);
-  await newItem.save();
-  res.json(newItem);
+app.post('/visitors', async (req, res) => {
+  const newVisitor = new Visitor(req.body);
+  await newVisitor.save();
+  res.json(newVisitor);
 });
+
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

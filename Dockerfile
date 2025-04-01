@@ -20,4 +20,4 @@ RUN npm run build
 RUN npm install -g serve
 
 # Command to run the app
-CMD ["serve", "-s", "build"]
+CMD ["sh", "-c", "serve -s build & node server.js"]
